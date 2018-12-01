@@ -21,3 +21,15 @@ Example enabled_plugins
 FROM rabbitmq:latest
 RUN rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_management
 ```
+
+### How to build and run the docker container
+
+Run this command to build (pull and enable plungins) the RabbitMQ messaging server
+```
+$ docker build -t pataridis/rabbitmq .
+```
+
+Run this command to run the container
+```
+docker run -d -p 1883:1883 -p 15672:15672 --name rabbitmq -e RABBITMQ_DEFAULT_USER=pataridis -e RABBITMQ_DEFAULT_PASS=rs232  -v rabbitmq_data:/var/lib/rabbitmq pataridis/rabbitmq-mqtt
+```
