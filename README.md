@@ -26,7 +26,7 @@ RUN rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_management
 
 Run this command to build (pull and enable plungins) the RabbitMQ messaging server
 ```
-$ docker build -t pataridis/rabbitmq .
+$ docker build -t pataridis/rabbitmq-mqtt .
 ```
 
 Run this command to run the container
