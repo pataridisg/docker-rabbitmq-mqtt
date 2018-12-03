@@ -24,12 +24,22 @@ RUN rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_management
 
 ### How to build and run the docker container
 
-Run this command to build (pull and enable plungins) the RabbitMQ messaging server
+Run this command to build (pull and enable plungins) the RabbitMQ messaging server ('<YOUR-NAME>/' is optional)
+```
+$ docker build -t <YOUR-NAME>/<YOUR-REPO> .
+```
+
+Run this command to run the container ('<YOUR-NAME>/' is optional)
+```
+$ docker run -d -p 1883:1883 -p 15672:15672 --name rabbitmq -e RABBITMQ_DEFAULT_USER=<YOUR-USERNAME> -e RABBITMQ_DEFAULT_PASS=<YOUR-PASSWORD>  -v rabbitmq_data:/var/lib/rabbitmq <YOUR-NAME>/<YOUR-REPO>
+```
+
+### Example
+Build command:
 ```
 $ docker build -t pataridis/rabbitmq-mqtt .
 ```
-
-Run this command to run the container
+Run command:
 ```
-docker run -d -p 1883:1883 -p 15672:15672 --name rabbitmq -e RABBITMQ_DEFAULT_USER=pataridis -e RABBITMQ_DEFAULT_PASS=rs232  -v rabbitmq_data:/var/lib/rabbitmq pataridis/rabbitmq-mqtt
+$ docker run -d -p 1883:1883 -p 15672:15672 --name rabbitmq -e RABBITMQ_DEFAULT_USER=pataridis -e RABBITMQ_DEFAULT_PASS=password  -v rabbitmq_data:/var/lib/rabbitmq pataridis/rabbitmq-mqtt
 ```
